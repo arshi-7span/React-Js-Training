@@ -1,0 +1,23 @@
+ul {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+  }
+  
+  li {
+    list-style: none;
+    margin-right: 1rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  li.active {
+    border-color: #007aff;
+    color: #007aff;
+  }
+  
