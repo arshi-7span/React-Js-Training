@@ -31,7 +31,7 @@ export default class UserNameValidate extends Component {
   render() {
     return (
       <div>
-         <TextField id="username" label="UserName" variant="outlined" onChange={this.handleInput} value={this.state.value}/>
+         <TextField id="username" label="UserName" variant="outlined" onBlur={this.handleInput} value={this.state.value}/>
       </div>
     )
   }

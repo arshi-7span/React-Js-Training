@@ -26,7 +26,7 @@ export default class OtpValidate extends Component {
     render() {
     return (
         <div>
-        <TextField id="otp" label="otp" variant="outlined" onChange={this.handleOtp} value={this.state.value}/>
+        <TextField id="otp" label="otp" variant="outlined" onBlur={this.handleOtp} value={this.state.value}/>
      </div>
     )
   }
