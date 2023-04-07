@@ -5,7 +5,7 @@ import InputLabel from "@mui/material/InputLabel";
 export default function SelectComponent(props) {
   return (
     <>
-      <FormControl sx={props.sx1} size={props.size}>
+      <FormControl variant="standard" sx={{ m: 1, minWidth: 120 }}>
         <InputLabel>{props.lable}</InputLabel>
         <Select
           labelId={props.selectLableId}
@@ -13,11 +13,14 @@ export default function SelectComponent(props) {
           value={props.value}
           onChange={props.onChange}
         >
-          {props.menuItemList && props.menuItemList.map((item) => {
-           
-            return  <MenuItem key={item} value={item}>{item}</MenuItem>
-           
-          })}
+          {props.menuItemList &&
+            props.menuItemList.map((item) => {
+              return (
+                <MenuItem key={item} value={item}>
+                  {item}
+                </MenuItem>
+              );
+            })}
         </Select>
       </FormControl>
     </>
