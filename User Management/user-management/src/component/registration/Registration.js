@@ -15,15 +15,13 @@ import { format } from "date-fns";
 import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 import moment from "moment";
-
 class Registration extends Component {
   constructor() {
     super();
     this.state = {
-	  responseData:null,
       username: "",
       firstname: "",
       lastname: "",
@@ -179,158 +177,139 @@ class Registration extends Component {
 
     axios
       .post("http://localhost:8099/saveUserRegistration", userRegistrationData)
-      .then((response) =>
-       {
-        this.setState({
-          responseData:response.data
-        });
-      console.log(response.data);
-        
-      }
-       );
-       if(this.state.responseData)
-      {
-        window.location.href = "/signIn";
-      }
+      .then((response) => console.log(response.data));
+    console.log("data submited");
   }
 
   render() {
     return (
       <>
-        <div className="wrapper">
-          <div className="logo">
-            <img src="\assests\images\userLogo.png" alt="SignIn" />
-          </div>
-          <div className="title">
-            <p>Registration</p>
-          </div>
-          <div className="form">
-            <form>
-              <div className="input_field">
-                <label className="label">UserName</label>
-                <TextFieldComponent
-                  id="username"
-                  type="text"
-                  className={this.state.input}
-                  value={this.state.username}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">FirstName</label>
-                <TextFieldComponent
-                  id="firstname"
-                  type="text"
-                  className={this.state.input}
-                  value={this.state.firstname}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">LastName</label>
-                <TextFieldComponent
-                  id="lastname"
-                  type="text"
-                  className={this.state.input}
-                  value={this.state.lastname}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">Password</label>
-                <TextFieldComponent
-                  id="password"
-                  type="password"
-                  className={this.state.input}
-                  value={this.state.password}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">Confirm Password</label>
-                <TextFieldComponent
-                  id="confirmPassword"
-                  type="password"
-                  className={this.state.input}
-                  value={this.state.confirmPassword}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">Email</label>
-                <TextFieldComponent
-                  id="emailId"
-                  type="text"
-                  className={this.state.input}
-                  value={this.state.emailId}
-                  variant={this.state.variant}
-                  size={this.state.size}
-                  onChange={this.handleEvent}
-                ></TextFieldComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">Gender</label>
-                <FormControl>
-                  <RadioGroup
-                    row
-                    aria-labelledby="demo-controlled-radio-buttons-group"
-                    id="gender"
-                    value={this.state.value}
-                    onChange={this.handleGender}
-                  >
-                    <FormControlLabel
-                      value="female"
-                      control={<Radio />}
-                      label="Female"
-                    />
-                    <FormControlLabel
-                      value="male"
-                      control={<Radio />}
-                      label="Male"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </div>
+        <div className="form">
+          <form>
+            <label className="label">UserName</label>
 
-              <div className="input_field">
-                <label className="label">Country</label>
+            <TextFieldComponent
+              id="username"
+              type="text"
+              className={this.state.input}
+              value={this.state.username}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
 
-                <SelectComponent
-                  // sx1={this.state.sxProperty[0]}
-                  // size={this.state.formControlSize}
-                  id="country"
-                  lable="select Country"
-                  labelId="countryLable"
-                  value={this.state.country}
-                  onChange={this.handleCountry}
-                  menuItemList={this.state.menuItemList[0].countryList}
-                ></SelectComponent>
-              </div>
-              <div className="input_field">
-                <label className="label">State</label>
-                <SelectComponent
-                  // sx1={this.state.sxProperty[0]}
-                  // size={this.state.formControlSize}
-                  id="state"
-                  lable="select State"
-                  labelId="stateLable"
-                  value={this.state.state}
-                  onChange={this.handleState}
-                  menuItemList={this.state.menuItemList[0].stateList}
-                ></SelectComponent>
-              </div>
+            <label className="label">FirstName</label>
 
-              {/* <DatePickerComponent
+            <TextFieldComponent
+              id="firstname"
+              type="text"
+              className={this.state.input}
+              value={this.state.firstname}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
+
+            <label className="label">LastName</label>
+
+            <TextFieldComponent
+              id="lastname"
+              type="text"
+              className={this.state.input}
+              value={this.state.lastname}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
+
+            <label className="label">Password</label>
+            <TextFieldComponent
+              id="password"
+              type="password"
+              className={this.state.input}
+              value={this.state.password}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
+
+            <label className="label">Confirm Password</label>
+            <TextFieldComponent
+              id="confirmPassword"
+              type="password"
+              className={this.state.input}
+              value={this.state.confirmPassword}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
+
+            <label className="label">Email</label>
+            <TextFieldComponent
+              id="emailId"
+              type="text"
+              className={this.state.input}
+              value={this.state.emailId}
+              variant={this.state.variant}
+              size={this.state.size}
+              onChange={this.handleEvent}
+            ></TextFieldComponent>
+
+            <label className="label">Gender</label>
+
+            <FormControl>
+              <RadioGroup
+                row
+                aria-labelledby="demo-controlled-radio-buttons-group"
+                id="gender"
+                value={this.state.value}
+                onChange={this.handleGender}
+              >
+                <FormControlLabel
+                  value="female"
+                  control={<Radio />}
+                  label="Female"
+                />
+                <FormControlLabel
+                  value="male"
+                  control={<Radio />}
+                  label="Male"
+                />
+
+                <FormControlLabel
+                  value="other"
+                  control={<Radio />}
+                  label="Other"
+                />
+              </RadioGroup>
+            </FormControl>
+
+            <label className="label">Country</label>
+
+            <SelectComponent
+              sx1={this.state.sxProperty[0]}
+              size={this.state.formControlSize}
+              id="country"
+              lable="select Country"
+              labelId="countryLable"
+              value={this.state.country}
+              onChange={this.handleCountry}
+              menuItemList={this.state.menuItemList[0].countryList}
+            ></SelectComponent>
+
+            <label className="label">State</label>
+            <SelectComponent
+              sx1={this.state.sxProperty[0]}
+              size={this.state.formControlSize}
+              id="state"
+              lable="select State"
+              labelId="stateLable"
+              value={this.state.state}
+              onChange={this.handleState}
+              menuItemList={this.state.menuItemList[0].stateList}
+            ></SelectComponent>
+
+            {/* <DatePickerComponent
            dateAdapter={AdapterDayjs}
            spacing="3"
            label={this.state.label}
@@ -342,7 +321,7 @@ class Registration extends Component {
           )}
             ></DatePickerComponent> */}
 
-              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+            {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
               <Stack spacing={3}>
                 <DesktopDatePicker
                   label="Birthdate"
@@ -356,21 +335,20 @@ class Registration extends Component {
               </Stack>
             </LocalizationProvider> */}
 
-              <div>
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={this.handleSubmit}
-                  className="btn"
-                >
-                  submit
-                </Button>
-              </div>
-            </form>
-            {/* <p>
+            <div>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={this.handleSubmit}
+                className="btn"
+              >
+                submit
+              </Button>
+            </div>
+          </form>
+          <p>
             Already Registred? <Link to="/signIn">Sign In</Link>
-          </p> */}
-          </div>
+          </p>
         </div>
       </>
     );

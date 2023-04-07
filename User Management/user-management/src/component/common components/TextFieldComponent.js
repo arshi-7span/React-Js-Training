@@ -1,20 +1,22 @@
 import { TextField } from "@mui/material";
 
 function TextFieldComponent(props) {
-  return (
+    return (
     <>
-      <TextField
-        id={props.id}
+        <TextField 
+        id={props.id} 
         type={props.type}
         variant={props.variant}
-        // className={props.className}
+        className={props.className}
         size={props.size}
         value={props.value}
         onChange={props.onChange}
-        fullWidth
-      ></TextField>
+        >
+   </TextField>
+
     </>
-  );
+   
+  )
 }
 
-export default TextFieldComponent;
+export default TextFieldComponent
